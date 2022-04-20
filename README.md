@@ -1,6 +1,6 @@
 # Exactly Finance's ETHPool challenge
 
-This is my submission for Exactly's Finance ETH Pool challenge. The contract was deployed at `0xB06296feC71f80B62D0C85AD823DA9f6413913F9` on the Goerli network ([Etherscan](https://goerli.etherscan.io/address/0xB06296feC71f80B62D0C85AD823DA9f6413913F9))
+This is my submission for Exactly Finance's ETHPool challenge. The contract was deployed at `0xB06296feC71f80B62D0C85AD823DA9f6413913F9` on the Goerli network ([Etherscan](https://goerli.etherscan.io/address/0xB06296feC71f80B62D0C85AD823DA9f6413913F9))
 
 ## Considerations:
 
