@@ -1,55 +1,46 @@
-# Smart Contract Challenge
+# Exactly Finance's ETHPool challenge
 
-## A) Challenge
+This is my submission for Exactly's Finance ETH Pool challenge. The contract was deployed at `0xB06296feC71f80B62D0C85AD823DA9f6413913F9` on the Goerli network ([Etherscan](https://goerli.etherscan.io/address/0xB06296feC71f80B62D0C85AD823DA9f6413913F9))
 
-### 1) Setup a project and create a contract
+## Considerations:
 
-#### Summary
+- This is an ETH to ETH pool, meaning you stake ETH and receive ETH rewards, and not any kind of ERC20 token (for simplicity's sake)
+- Like the system described in [Scalable Reward Distribution on the Ethereum
+  Blockchain](http://batog.info/papers/scalable-reward-distribution.pdf), this system DOES NOT compound the reward. The user must manually do so
+- Unlike the paper mentioned above, this system DOES ALLOW users to change the stake size once it's deposited
+- The entire pending rewards amount is sent to the user when depositing or withdrawing any amount. This is a design choice, the alternative is to have a separate function for withdrawing rewards (and keeping track of the reward tally)
 
-ETHPool provides a service where people can deposit ETH and they will receive weekly rewards. Users must be able to take out their deposits along with their portion of rewards at any time. New rewards are deposited manually into the pool by the ETHPool team each week using a contract function.
+## Commands
 
-#### Requirements
+Test:
 
-- Only the team can deposit rewards.
-- Deposited rewards go to the pool of users, not to individual users.
-- Users should be able to withdraw their deposits along with their share of rewards considering the time when they deposited.
+`npx hardhat test`
 
-Example:
+Coverage:
 
-> Let say we have user **A** and **B** and team **T**.
->
-> **A** deposits 100, and **B** deposits 300 for a total of 400 in the pool. Now **A** has 25% of the pool and **B** has 75%. When **T** deposits 200 rewards, **A** should be able to withdraw 150 and **B** 450.
->
-> What if the following happens? **A** deposits then **T** deposits then **B** deposits then **A** withdraws and finally **B** withdraws.
-> **A** should get their deposit + all the rewards.
-> **B** should only get their deposit because rewards were sent to the pool before they participated.
+`npx hardhat coverage`
 
-#### Goal
+Check contract balance:
 
-Design and code a contract for ETHPool, take all the assumptions you need to move forward.
+`npx hardhat balance --network goerli`
 
-You can use any development tools you prefer: Hardhat, Truffle, Brownie, Solidity, Vyper.
+Be sure to create an .env file with your keys in it in order to run the following scripts.
 
-Useful resources:
+Feel free to edit the ETH values inside them to test the contract.
 
-- Solidity Docs: https://docs.soliditylang.org/en/v0.8.4
-- Educational Resource: https://github.com/austintgriffith/scaffold-eth
-- Project Starter: https://github.com/abarmat/solidity-starter
+Deposit:
 
-### 2) Write tests
+`npx hardhat run scripts/deposit.ts --network goerli`
 
-Make sure that all your code is tested properly
+Withdraw:
 
-### 3) Deploy your contract
+`npx hardhat run scripts/withdraw.ts --network goerli`
 
-Deploy the contract to any Ethereum testnet of your preference. Keep record of the deployed address.
+Distribute:
 
-Bonus:
+`npx hardhat run scripts/distribute.ts --network goerli`
 
-- Verify the contract in Etherscan
+## References:
 
-### 4) Interact with the contract
-
-Create a script (or a Hardhat task) to query the total amount of ETH held in the contract.
-
-_You can use any library you prefer: Ethers.js, Web3.js, Web3.py, eth-brownie_
+- http://batog.info/papers/scalable-reward-distribution.pdf
+- https://solmaz.io/2019/02/24/scalable-reward-changing
