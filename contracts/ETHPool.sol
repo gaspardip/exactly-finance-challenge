@@ -66,7 +66,7 @@ contract ETHPool is AccessControl {
         uint256 pending = pendingRewards(_user);
 
         if (pending > 0) {
-            payable(msg.sender).sendValue(pending);
+            payable(_user).sendValue(pending);
         }
     }
 
