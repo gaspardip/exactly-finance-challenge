@@ -2,7 +2,7 @@
 
 This is my submission for Exactly Finance's ETHPool challenge. The contract was deployed at `0xB06296feC71f80B62D0C85AD823DA9f6413913F9` on the Goerli network ([Etherscan](https://goerli.etherscan.io/address/0xB06296feC71f80B62D0C85AD823DA9f6413913F9))
 
-## Considerations:
+## Considerations
 
 - This is an ETH to ETH pool, meaning you stake ETH and receive ETH rewards, and not any kind of ERC20 token (for simplicity's sake)
 - Like the system described in [Scalable Reward Distribution on the Ethereum
@@ -40,7 +40,7 @@ Distribute:
 
 `npx hardhat run scripts/distribute.ts --network goerli`
 
-## References:
+## References
 
 - http://batog.info/papers/scalable-reward-distribution.pdf
 - https://solmaz.io/2019/02/24/scalable-reward-changing
